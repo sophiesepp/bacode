@@ -1,0 +1,892 @@
+.jqueryslidemenu{
+font: bold 12px Verdana;
+background: #414141;
+width: 978px;
+height: 15px;
+
+}
+
+.jqueryslidemenu ul{
+margin: 0;
+padding: 0;
+list-style-type: none;
+}
+
+/*Top level list items*/
+.jqueryslidemenu ul li{
+position: relative;
+display: inline;
+float: left;
+}
+
+/*Top level menu link items style*/
+.jqueryslidemenu ul li a{
+display: block;
+background: #414141; /*background of tabs (default state)*/
+color: white;
+padding: 10px 10.3px;
+padding-bottom:30px;
+border-right: 1px solid #778;
+color: #2d2b2b;
+text-decoration: none;
+font-family: 'Merienda', 'Trebuchet MS', Verdana, sans-serif;
+font-size:120%;
+width:173px;
+height:15px;
+text-align:center;
+}
+
+* html .jqueryslidemenu ul li a{ /*IE6 hack to get sub menu links to behave correctly*/
+display: inline-block;
+}
+
+.jqueryslidemenu ul li a:link, .jqueryslidemenu ul li a:visited{
+color: white;
+}
+
+.jqueryslidemenu ul li a:hover{
+background: black; /*tab link background during hover state*/
+color: white;
+}
+	
+/*1st sub level menu*/
+.jqueryslidemenu ul li ul{
+position: absolute;
+left: 0;
+display: block;
+visibility: hidden;
+
+
+}
+
+/*Sub level menu list items (undo style from Top level List Items)*/
+.jqueryslidemenu ul li ul li{
+display: list-item;
+float: none;
+
+
+}
+
+/*All subsequent sub menu levels vertical offset after 1st level sub menu */
+.jqueryslidemenu ul li ul li ul{
+top: 0;
+}
+
+/* Sub level menu links style */
+.jqueryslidemenu ul li ul li a{
+font: normal 13px Verdana;
+width: 178px; /*width of sub menus*/
+padding: 5px;
+margin: 0;
+border-top-width: 0;
+border-bottom: 1px solid gray;
+height:30px;
+}
+
+.jqueryslidemenuz ul li ul li a:hover{ /*sub menus hover style*/
+background: #eff9ff;
+color: black;
+}
+
+
+
+h1 {
+	font-family: 'Merienda', 'Trebuchet MS', Verdana, sans-serif;
+	line-height: 1.7em;
+	margin-bottom: 20px;
+	font-weight: bold;
+	letter-spacing: -0.03em;
+	text-align: center;
+	font-size: 2em;
+	color: #777777;
+	margin: 0px 0px 70px;
+	background: white;
+}
+
+
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+
+	color: black;
+	font: 1px sans-serif;
+	
+	text-align: center;
+	font-family: Impact;
+}
+
+#wrapper {
+	width: 978px;
+	margin: 1% auto;
+	color: #000;
+}
+
+
+
+
+.line {
+	fill: none;
+	stroke: steelblue;
+	stroke-width: 1 px;
+}
+
+
+.arc path {
+	stroke: #fff;
+}
+
+.arc text {
+	font-size: 10px;
+}
+
+.x.axis path {
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+.y.axis path {
+	display: none;
+}
+
+.x.axis text {
+	font-size: 10px;
+}
+
+.y.axis text {
+	font-size: 10px;
+}
+
+.a.axis text {
+	font-size: 10px;
+}
+
+.legende200{
+	margin-top:10px;
+}
+
+.legende240{
+	margin-top:10px;
+}
+
+.legende560{
+	margin-top:10px;
+}
+
+bar2 {
+	position: relative;;
+	float: left;
+	width: 40px;
+	height: 390px;
+	color: red;
+}
+
+.axis path,.axis line {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+.bar {
+	fill: #080826;
+}
+
+
+#composingContainer {
+	width: 978px;
+	background-color: #E7E7E7;
+	float: left;
+	border: 1px black solid;
+	
+}
+
+#useofKeysContainer {
+	width: 978px;
+	float: left;
+	background-color: #E7E7E7;
+	border: 1px black solid;
+}
+
+#percentagesandnumbersContainer {
+	width: 978px;
+	float: left;
+	background-color: #E7E7E7;
+	border: 1px black solid;
+}
+
+#questionsaboutcomposersContainer {
+	width: 978px;
+	float: left;
+	background-color: #E7E7E7;
+	border: 1px black solid;
+}
+
+#queryBuilderContainer {
+	width: 978px;
+	float: left;
+	background-color: #E7E7E7;
+	border: 1px black solid;
+}
+.queryBuilderPanel {
+	width: 778px;
+	height:600px;
+	padding-left:200px;
+	float: left;
+	background: url("gradient.jpg");
+}
+
+.examplePanel{
+	height:50px;
+	width:778px;
+}
+
+.selectBox{
+	
+	height:25px;
+	font-size:15px;
+	margin-left:20px;
+	margin-bottom:20px;
+}
+
+.gwt-Button-queryBuilderButton{
+	background:red;
+	width:170px;
+}
+
+.gwt-Button-exampleButton{
+	background:red;
+	width:200px;
+	float:right;
+}
+
+
+.builderPanel1{
+	margin: 5px;
+	margin-left:10px;
+	
+}
+.builderPanel2{
+	margin: 5px;
+	margin-left:10px;
+
+}
+.builderPanel3{
+	margin: 5px;
+	margin-left:10px;
+
+}
+.builderPanel4{
+	margin: 5px;
+	margin-left:10px;
+
+}
+.builderPanel5{
+	margin: 5px;
+	margin-left:10px;
+	
+}
+
+.dataQueryBuilder{
+	align:center;
+}
+
+
+.subjectBox{
+	width:180px;
+	height:25px;
+	font-size:15px;
+}
+
+.predicateBox{
+	width:130px;
+	height:25px;
+	font-size:15px;
+}
+
+.objectBox{
+	width:120px;
+	height:15px;
+	font-size:15px;
+}
+
+.objectBoxList{
+	width:120px;
+	height:25px;
+	font-size:15px;
+}
+
+
+
+#connector{
+	margin-right:10px;
+	margin-left:10px;
+	height:25px;
+	font-size:15px;
+	
+}
+
+
+.text3 {
+	margin-top: 10px;
+	margin-right: 5px;
+	text-align: left;
+	font-family: Arial;
+	width: 120px;
+	
+}
+
+.gwt-SuggestBox-composerBox{
+	margin-top: 5px;
+	margin-right: 5px;
+	width: 300px;
+	
+}
+
+.composerButton{
+	margin-top: 5px;
+	margin-right: 5px;
+	width: 600px;
+}
+
+.textfield2 {
+	margin-top: 5px;
+	width: 110px;
+}
+
+.button1 {
+	width: 90px;
+}
+
+.label {
+	text-align: center;
+	
+}
+
+.buttonlabel {
+	margin-top: 30px;
+	margin-left: 10px;
+}
+
+
+
+.heading {
+	width: 958px;
+	padding-left: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background: url("gradient.jpg");
+	text-align: left;
+	border-top: 1px groove black;
+	border-bottom: 1px groove black;
+}
+
+.heading2 {
+	width: 469px;
+	border-top: 1px black solid;
+	border-bottom: 1px black solid;
+	border-right: 1px black solid;
+	padding-top: 10px;
+	padding-left:19px;
+	padding-bottom: 10px;
+	background: url("gradient.jpg");
+	text-align: left;
+
+}
+
+
+.timedownloadsPanel {
+	float: left;
+}
+
+.timedownloadscontentPanel {
+	border-bottom: 1px black solid;
+	width:978px;
+}
+
+.lefttimedownloadsPanel {
+	padding-top: 15px;
+	padding-left: 30px;
+	width: 978px;
+	padding-bottom: 30px;
+		
+}
+
+.righttimedownloadsPanel {
+	width: 938px;
+	margin-right:20px;
+
+}
+
+.linechartTimeDownloads {
+	margin: 20px;
+}
+
+.descriptionPanel {
+	
+	margin-left:20px;
+	font-size:140%;
+	background: white;
+	padding:10px;
+	color:grey;
+	
+}
+
+.linechartTimeDownloadsNormalized {
+	margin: 20px;
+}
+
+.timeagePanel {
+	float: left;
+	width: 690px;
+	
+}
+
+
+
+.lefttimeagePanel{
+	border-right: 1px black solid;
+	
+}
+
+.righttimeagePanel{
+	background:blue;
+	
+	
+}
+.Panel1 {
+	margin-top: 30px;
+	margin-left: 100px;
+	width: 400px;
+}
+
+.alternativePanel1 {
+	margin-top: 30px;
+	margin-left: 30px;
+	width: 400px;
+	
+}
+
+.Panel2 {
+	width: 600px;
+	margin-top: 20px;
+	float: left;
+	padding-left: 5px;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	border-top: 1px black solid;
+	border-bottom: 1px black solid;
+	background-color: #DFDFDF;
+	
+}
+
+.timecountryPanel {
+	float: left;
+	width: 690px;
+}
+
+.lefttimecountryPanel{
+	border-right: 1px black solid;
+	
+}
+
+
+
+.timepublicationsPanel {
+	float: left;
+	width: 900px;
+}
+
+.lefttimepublicationsPanel {
+	border-right: 1px black solid;
+}
+
+.righttimepublicationsPanel {
+	background:blue;
+}
+
+
+.timepublicationsPanel2 {
+	width: 700px;
+	float: left;
+	padding-left: 5px;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	border-top: 1px black solid;
+	border-bottom: 1px black solid;
+	background-color: #DFDFDF;
+}
+
+.linechartTimePublications {
+	margin: 20px;
+}
+
+.keypercentPanel {
+	width: 900px;
+}
+
+.leftkeypercentPanel{
+	border-right: 1px black solid;
+}
+
+.rightkeypercentPanel{
+	background:blue;
+}
+
+
+
+.pieKeyPercent {
+	margin-left: 30px;
+	
+}
+
+
+
+.countrieskeyPanel {
+	float: left;
+	width: 636px;
+}
+
+.leftcountrieskeyPanel{
+	border-right: 1px black solid;
+}
+
+.countrieskeyPanel1 {
+	margin-top: 75px;
+	margin-left: 50px;
+	width: 400px;
+}
+
+.countrieskeyPanel2 {
+	width: 700px;
+	margin-top: 50px;
+	float: left;
+	padding-left: 100px;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	border-top: 1px black solid;
+	border-bottom: 1px black solid;
+	background-color: #DFDFDF;
+}
+
+.rightcountrieskeyPanel{
+	width:274px;
+	height:547px;
+	background:blue;
+}
+
+.timekeyPanel {
+	float: left;
+	width:900px;
+}
+
+.lefttimekeyPanel{
+	border-right: 1px black solid;
+}
+
+.righttimekeyPanel{
+	background:blue;
+	height:432px;
+}
+
+
+.agekeyPanel {
+	float: left;
+	width:900px;
+}
+
+.leftagekeyPanel{
+	border-right: 1px black solid;
+}
+
+.rightagekeyPanel{
+	background:blue;
+	height:432px;
+}
+
+
+
+.workscorePanel {
+	float: left;
+}
+
+
+.workscorePanel{
+	border-right: 1px black solid;
+	width:489px;
+}
+
+
+
+
+.pieWorkScore {
+	margin-left: 30px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.workdownloadsPanel {
+	float: left;
+	width:489px;
+}
+
+
+
+
+.pieWorkDownloads {
+	margin-left: 30px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.countrydownloadsPanel {
+	float: left;
+	
+}
+
+.leftcountrydownloadsPanel{
+	border-right: 1px black solid;
+	width:636px;
+	height:365px;
+}
+
+.rightcountrydownloadsPanel{
+	background:blue;
+}
+
+.countrydownloadsPanel1 {
+float:left;
+}
+
+
+
+.barchartCountryDownloads {
+ margin-top:20px;
+ margin-bottom:20px;
+}
+
+
+
+
+.leftmostusedgenresPanel{
+	border-right: 1px black solid;
+	height:330px;
+	width:636px;
+}
+
+.rightmostusedgenresPanel{
+	background:blue;
+	width:225px;
+}
+
+
+
+
+.mostusedngramsPanel {
+	float: left;
+}
+
+.leftmostusedngramsPanel{
+	border-right: 1px black solid;
+	width:750px;
+	height:330px;
+}
+
+.rightmostusedngramsPanel{
+	background:blue;
+	height:330px;
+}
+.mostusedngramsPanel1 {
+	width: 636px;
+}
+
+
+.ngramcomposerPanel {
+	float: left;
+	margin-bottom: 50px;
+	height:550px;
+}
+
+
+.leftngramcomposerPanel{
+	border-right: 1px black solid;
+	width:750px;
+}
+
+.rightngramcomposerPanel{
+	background:blue;
+	height:550px;
+	width:225px;
+}
+
+.ngramcomposerPanel1 {
+	width: 600px;
+	margin-left: 20px;
+	margin-top: 30px;
+}
+
+.ngramcomposerPanel2 {
+	float: left;
+	margin-left: 20px;
+	margin-top: 50px;
+	width: 600px;
+}
+
+.ngramBox{
+	width: 400px;
+	margin-top:10px;
+}
+
+.gwt-Button-NgramComposerQueryButton{
+	float:right;
+	margin-top:10px;
+}
+
+.agepublicationscomposerPanel {
+	float: left;
+
+}
+
+.leftagepublicationscomposerPanel {
+	border-right: 1px black solid;
+	width:600px;
+	
+}
+
+.agepublicationscomposerPanel1 {
+	width:500px;
+	height:300px;
+}
+
+.rightagepublicationscomposerPanel {
+	background:blue;
+	height:198px;
+	
+	
+}
+
+.linechartAgePublicationsComposer {
+	margin: 20px;
+	float:left;
+}
+
+
+
+
+.agedownloadscomposerPanel {
+	float: left;
+	height:300px;
+}
+
+.leftagedownloadscomposerPanel {
+		border-right: 1px black solid;
+	width:500px;
+	height:300px;
+	
+}
+
+.rightagedownloadscomposerPanel {
+	background:blue;
+	height:300px;
+	width:475px;
+	
+}
+
+.linechartAgeDownloadsComposer {
+	margin: 20px;
+}
+
+
+.Panel {
+	float: left;
+}
+
+
+.composergenrePanel{
+	border-right: 1px black solid;
+	width:489px;
+	height:400px;
+}
+
+
+
+
+.pieComposerGenre {
+	margin-left: 30px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.composerkeyPanel {
+	float: left;
+	width:489px;
+	height:400px;
+}
+
+
+
+
+.pieComposerKey {
+	margin-left: 30px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+.composerngramPanel {
+	float: left;
+	margin-bottom: 100px;
+}
+
+.composerngramPanel1 {
+	width: 700px;
+}
+
+.composerngramPanel2 {
+	width: 700px;
+	float: left;
+}
+
+.seperationPanel{
+	width: 978px;
+	height: 250px;
+	background: white;
+	
+}
+
+.seperationPanelComposer{
+	width: 978px;
+	height: 125px;
+	background: white;
+	
+}
+
+#heatmapTimeAgeCanvas {
+	float: left;
+	position: relative;
+}
+
+#heatmapTimeCountryCanvas {
+	position: relative;
+	float: left;
+	margin-right:20px;
+}
+
+#heatmapTimeKeyCanvas {
+	position: relative;
+	float: left;
+}
+
+#heatmapAgeKeyCanvas {
+	position: relative;
+	float: left;
+}
+
+
+#heatmapCountriesKeyCanvas {
+	position: relative;
+	float: left;
+}
+
+
+

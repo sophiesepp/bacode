@@ -1,0 +1,122 @@
+
+
+Alter von Komponisten über die Zeit
+Age of composers over time
+
+static String queryTimeAge = "SELECT publication AS publication,(publication-birth) AS age, count(publication-birth) AS counts FROM workspace.composer AS composers JOIN (SELECT publication,personId FROM workspace.work) AS works ON composers.personId=works.personId GROUP BY publication,age";
+
+
+
+Vorkommen einer Melodie über die Zeit und Altergruppen von Komponisten:
+Occurrence of a melody over time and age of composers
+
+static String query1 = "SELECT table3.publication AS publication, (table3.publication-table4.birth) AS age,count(table3.publication-table4.birth) AS hits FROM(SELECT table2.personId AS persona,table2.publication AS publication FROM(SELECT scores.workId AS worka FROM workspace.ngram AS ngrams JOIN workspace.score AS scores ON  ngrams.scoreId = scores.scoreId WHERE ngrams.ngram ='1 0 0 0') AS table1 JOIN(SELECT workId AS workb, personId AS personId,publication AS publication FROM workspace.work) AS table2 ON table1.worka = table2.workb) AS table3 JOIN (SELECT personId AS personb, birth AS birth FROM workspace.composer) AS table4 ON table3.persona = table4.personb GROUP BY publication,age";
+
+
+
+Vorkommen einer Melodie über die Länder:
+Occurrence of a melody over countries
+
+static String query2 = "SELECT table4.country AS country, count(table4.country) AS hits FROM (SELECT table2.personId AS persona,table2.publication AS publication FROM(SELECT scores.workId AS worka FROM workspace.ngram AS ngrams JOIN workspace.score AS scores ON  ngrams.scoreId = scores.scoreId WHERE ngrams.ngram = '1 0 0 0') AS table1 JOIN (SELECT workId AS workb, personId AS personId,publication AS publication FROM workspace.work) AS table2 ON table1.worka = table2.workb WHERE table2.publication<1900) AS table3 JOIN (SELECT personId AS personb, country AS country FROM workspace.composer) AS table4 ON table3.persona = table4.personb GROUP BY country";
+
+
+
+Kompositionshäufigkeit in den Ländern über die Zeit:
+Frequency of composing in countries over time
+
+static String queryCountry = "SELECT publication AS publication,country AS country,count(country)AS counts FROM (SELECT personId AS personId,country AS country FROM workspace.composer AS composers JOIN (SELECT publication,personId FROM workspace.work) AS works ON composers.personId=works.personId GROUP BY publication,country"; 
+
+
+
+Anteil der Deutschen und Österreicher in den Top 100 Charts (in einem Jahr):
+Percentage of Germans and Autrians in top 100 charts 
+
+static String queryGermanAustrianPercent = "SELECT publication AS publication, count(downloads) AS counts FROM(SELECT table2.publication AS publication, table2.downloads AS downloads,table1.country AS country FROM (SELECT table1.country AS country, table1.personId AS personId) FROM workspace.composer AS table1 JOIN (SELECT personId AS personId, downloads AS downloads, publication AS publication FROM workspace.work) AS table2 ON table1.personId=table2.personId WHERE table2.publication='1900')GROUP BY publication,downloads,country ORDER BY downloads DESC LIMIT 100) WHERE country='Austria' OR country='GERMANY' GROUP BY publication";
+
+
+
+Durchschnittliche Downloads(Beliebtheit) der Jahre:
+(aus welchen Jahren wird besonders viel heruntergeladen)
+Popularity of years measured by downloads of works of these years
+
+static String queryTimeDownloads = "SELECT publication AS publication, INTEGER(ROUND(sum(downloads)/count(downloads))) AS downloads FROM workspace.work GROUP BY publication";
+
+
+
+Beliebtheit der Tonarten über die Zeit:
+Popularity of keys over time
+
+static String queryTimeKey = "SELECT publication AS publication,key AS key,count(key)AS counts FROM workspace.work GROUP BY publication,key";
+
+
+
+Beliebtheit der Tonarten bei welchen Altergruppen von Komponisten:
+Popularity of keys among ages of composers
+
+static String queryAgeKey = "SELECT table2.publication-table1.birth AS age, table2.key AS key,count(table2.key) FROM workspace.composer AS table1 JOIN(SELECT publication AS publication,key AS key, personId AS personId FROM workspace.work) AS table2 ON table1.personId=table2.personId WHERE table1.personId='K4' GROUP BY age,key";
+
+
+
+Mit welchem Alter war ein Komponist am erfolgreichsten?
+Success of a composer over working period
+
+static String queryAgeDownloadsComposer = "SELECT table2.publication-table1.birth AS age, INTEGER(ROUND(sum(downloads)/count(downloads))) AS downloads FROM workspace.composer AS table1 JOIN (SELECT publication AS publication, downloads AS downloads, personId AS personId FROM workspace.work) AS table2 ON table1.personId = table2.personId WHERE table1.personId='K4' GROUP BY age";
+
+
+Mit welchem Alter verwendete ein Komponist welche Tonarten?
+Use of keys of a composer over working period
+
+static String queryAgeKeyComposer = "SELECT table2.publication-table1.birth AS age, key AS key, count(key) AS counts FROM workspace.composer AS table1 JOIN (SELECT publication AS publication, key AS key, personId AS personId FROM workspace.work) AS table2 ON table1.personId = table2.personId WHERE table1.personId='K4' GROUP BY age, key";
+
+
+Welche Genres komponierte ein Komponist wie häufig?
+Genres a composer composed in percent
+
+static String queryComposerGenrePercent = "SELECT genre AS genre, count(workId) AS workId FROM (SELECT table2.workId AS workId, table2.genre AS genre FROM workspace.composer AS table1 JOIN (SELECT personId AS personId, genre AS genre, workId AS workId FROM workspace.work) AS table2 ON table1.personId=table2.personId WHERE table1.personId='K4')GROUP BY genre ORDER BY workId DESC";
+
+
+Welche Tonarten verwendete eine Komponist wie häufig?
+Keys a composer used in percent
+
+static String queryComposerKeyPercent = "SELECT key AS key, count(workId) AS workId FROM (SELECT table2.workId AS workId, table2.key AS key FROM workspace.composer AS table1 JOIN (SELECT personId AS personId, key AS key, workId AS workId FROM workspace.work) AS table2 ON table1.personId=table2.personId WHERE table1.personId='K4')GROUP BY key ORDER BY workId DESC";
+
+
+
+Wie viele Werke haben wie viele Partituren?
+Number of scores works have in percent
+
+static String queryWorkScorePercent = "SELECT counts AS scores, count(workId) AS works FROM (SELECT table1.workId AS workId,count(table2.scoreId) AS counts FROM workspace.work AS table1 JOIN (SELECT scoreId AS scoreId, workId AS workId FROM workspace.score) AS table2 ON table1.workId=table2.workId GROUP BY workId) GROUP BY scores";
+
+
+
+Wie viele Werke haben wie viele Downloads?
+How many works have how many downloads
+
+static String queryWorkDownloadsPercent = "SELECT downloads AS downloads FROM workspace.work";
+(Aufteilung in Gruppen 0-10000 usw. in java)
+
+
+
+Wann wurde in einem Land über die Zeit am meisten komponiert?
+Frequency of composing in a country over time
+
+static String queryCountry = "SELECT publication AS publication,count(publication)AS counts FROM (SELECT personId AS personId,country AS country FROM workspace.composer WHERE country='') AS composers JOIN (SELECT publication,personId FROM workspace.work) AS works ON composers.personId=works.personId GROUP BY publication,country"; 
+
+
+Welche Komponisten verwendeten eine Melodie am häufigsten?
+Composers who used a melody most frequently
+
+static String queryComposerNgram = "SELECT table4.personb AS composer, count(table4.personb) AS hits FROM (SELECT table2.personId AS persona,table2.publication AS publication FROM(SELECT scores.workId AS worka FROM workspace.ngram AS ngrams JOIN workspace.score AS scores ON  ngrams.scoreId = scores.scoreId WHERE ngrams.ngram = '1 0 0 0') AS table1 JOIN (SELECT workId AS workb, personId AS personId,publication AS publication FROM workspace.work) AS table2 ON table1.worka = table2.workb) AS table3 JOIN (SELECT personId AS personb, country AS country FROM workspace.composer) AS table4 ON table3.persona = table4.personb GROUP BY composer";
+
+
+
+
+
+
+
+
+
+
+
+
+

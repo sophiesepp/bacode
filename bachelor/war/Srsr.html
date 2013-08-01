@@ -1,0 +1,1489 @@
+<!doctype html>
+<!-- The DOCTYPE declaration above will set the     -->
+<!-- browser's rendering engine into                -->
+<!-- "Standards Mode". Replacing this declaration   -->
+<!-- with a "Quirks Mode" doctype is not supported. -->
+
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<!--                                                               -->
+<!-- Consider inlining CSS to reduce the number of requested files -->
+<!--                                                               -->
+<link type="text/css" rel="stylesheet" href="Srsr.css">
+
+
+<!--[if lte IE 7]>
+<style type="text/css">
+html .jqueryslidemenu{height: 1%;} /*Holly Hack for IE7 and below*/
+</style>
+<![endif]-->
+
+
+
+<title>Heatmaps</title>
+
+
+<script type="text/javascript" language="javascript"
+	src="srsr/srsr.nocache.js"></script>
+<script type="text/javascript" language="javascript"
+	src="heatmap.js/heatmap.js"></script>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+<script type="text/javascript" src="jqueryslidemenu.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+</head>
+
+
+<body>
+
+	<!-- OPTIONAL: include this if you want history support -->
+	<iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1'
+		style="position: absolute; width: 0; height: 0; border: 0"></iframe>
+
+	<!-- RECOMMENDED if your web app will not function without JavaScript enabled -->
+	<noscript>
+		<div
+			style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
+			Your web browser must have JavaScript enabled in order for this
+			application to display correctly.</div>
+	</noscript>
+
+
+
+
+
+	<div id="wrapper">
+
+		<div id="myslidemenu" class="jqueryslidemenu">
+			<ul>
+				<li><a href="#">Composing over time</a>
+					<ul>
+						<li><a href="#heading1">Most successful years</a></li>
+						<li><a href="#heading2">Distribution over ages of
+								composers</a></li>
+						<li><a href="#heading3">Distribution over countries</a></li>
+						<li><a href="#heading4">Frequency of composing over time</a></li>
+					</ul></li>
+				<li><a href="#">Use of keys</a>
+					<ul>
+						<li><a href="#heading5">Percentage use of keys</a></li>
+						<li><a href="#heading6">Use of keys in countries</a></li>
+						<li><a href="#heading7">Use of keys over time</a></li>
+						<li><a href="#heading8">Use of keys among ages of
+								composers</a></li>
+					</ul></li>
+				<li><a href="#">Interesting percentages and numbers</a>
+					<ul>
+						<li><a href="#heading9">How many works have how many
+								scores?</a></li>
+						<li><a href="#heading10">How many works have how many
+								downloads?</a></li>
+						<li><a href="#heading11">Which country has most
+								downloads?</a></li>
+						<li><a href="#heading12">10 most used genres over time</a></li>
+						<li><a href="#heading13">10 most used ngrams over time</a></li>
+						<li><a href="#heading14">Who used this melody most
+								frequently?</a></li>
+					</ul></li>
+				<li><a href="#">Questions about composers</a>
+					<ul>
+						<li><a href="#heading15">Success over working period</a></li>
+						<li><a href="#heading16">Composing over working period</a></li>
+						<li><a href="#heading17">Percentage use of genres</a></li>
+						<li><a href="#heading18">Percentage use of keys</a></li>
+						<li><a href="#heading19">Most characteristic melodies</a></li>
+					</ul></li>
+				<li><a href="#">QueryBuilder</a>
+					<ul>
+						<li><a href="#">QueryBuilder</a></li></li>
+			</ul>
+			</li>
+			</ul>
+			<br style="clear: left" />
+		</div>
+
+
+
+		<div align="center">
+
+			<div id="heading1" class="heading">Most successful years</div>
+			<div id="heading2" class="heading">Distribution over ages of
+				composers</div>
+			<div id="heading3" class="heading">Distribution over countries</div>
+			
+			<div id="heading4" class="heading">Frequency of composing over
+				time</div>
+
+			<div id="heading5" class="heading">Percentage use of keys</div>
+			<div id="heading6" class="heading">Use of keys in countries</div>
+			<div id="heading7" class="heading">Use of keys over time</div>
+			<div id="heading8" class="heading">Use of keys among ages of
+				composers</div>
+
+			<div id="heading9" class="heading2">How many works have how
+				many scores?</div>
+			<div id="heading10" class="heading2">How many works have how
+				many downloads?</div>
+			<div id="heading11" class="heading">Which country has most
+				downloads?</div>
+			<div id="heading12" class="heading">10 most frequently used
+				genres over time</div>
+			<div id="heading13" class="heading">10 most frequently used
+				ngrams over time</div>
+			<div id="heading14" class="heading">Who used this melody most
+				frequently?</div>
+			<div id="heading15" class="heading">Success over working period</div>
+			<div id="heading16" class="heading">Composing over working
+				period</div>
+			<div id="heading17" class="heading2">Percentage use of genres</div>
+			<div id="heading18" class="heading2">Percentage use of keys</div>
+			<div id="heading19" class="heading">Most used melodies</div>
+
+
+
+			<div id="descriptionComposingContainer"
+				class="descriptionComposingContainer"></div>
+
+
+
+			<div class="composingContainer" id="composingContainer">
+				<h1>Composing over time</h1>
+			</div>
+			<div class="useofKeysContainer" id="useofKeysContainer">
+				<h1>Use of keys</h1>
+			</div>
+
+			<div class="percentagesandnumbersContainer"
+				id="percentagesandnumbersContainer">
+				<h1>Interesting percentages and numbers</h1>
+			</div>
+			<div class="questionsaboutcomposersContainer"
+				id="questionsaboutcomposersContainer">
+				<h1>Questions about composers</h1>
+			</div>
+			<div class="queryBuilderContainer" id="queryBuilderContainer">
+				<h1>QueryBuilder</h1>
+			</div>
+
+
+
+			<div class="linechartTimeDownloads" id="linechartTimeDownloads"></div>
+			<div class="linechartTimeDownloadsNormalized"
+				id="linechartTimeDownloadsNormalized"></div>
+			<div class="linechartTimePublications" id="linechartTimePublications"></div>
+			<div class="linechartAgeDownloadsComposer"
+				id="linechartAgeDownloadsComposer"></div>
+			<div class="linechartAgePublicationsComposer"
+				id="linechartAgePublicationsComposer"></div>
+			<div class="pieWorkScore" id="pieWorkScore"></div>
+			<div class="pieWorkDownloads" id="pieWorkDownloads"></div>
+			<div class="pieKeyPercent" id="pieKeyPercent"></div>
+			<div class="pieComposerGenre" id="pieComposerGenre"></div>
+			<div class="pieComposerKey" id="pieComposerKey"></div>
+			<div class="pieComposerNgram" id="pieComposerNgram"></div>
+			<div class="barchartCountryDownloads" id="barchartCountryDownloads"></div>
+			<div class="multilinechartAgeNgramComposer"
+				id="multilinechartAgeNgramComposer"></div>
+			<div class="multilinechartMostUsedGenres"
+				id="multilinechartMostUsedGenres"></div>
+			<div class="multilinechartMostUsedGenres"
+				id="multilinechartMostUsedGenres"></div>
+			<div class="multilinechartMostUsedNgrams"
+				id="multilinechartMostUsedNgrams"></div>
+
+
+			<div class="legende200" id="legende200">
+				<img src="legende200.jpg">
+			</div>
+			<div class="legende240" id="legende240">
+				<img src="legende240.jpg">
+			</div>
+			<div class="legende240" id="secondlegende240">
+				<img src="legende240.jpg">
+			</div>
+			<div class="legende560" id="legende560">
+				<img src="legende560.jpg">
+			</div>
+
+			<div class=descriptionPanel id="righttimedownloadsPanel">The
+				first section shows which years of composing were most successful.
+				The success of a year is meassured by the sum of downloaded works.
+				Here either the absolute number of downloads can be considered or
+				the number of downloaded works normalized by how many works had been
+				published in that year. Both versions are shown here. The first
+				image shows the absolute counts, the second image shows the
+				normalized version.</div>
+
+
+			<div class=descriptionPanel id="righttimeagePanel">Ages of
+				composers through the times: The nearer to the red end of the color
+				scale the color of a spot is, the more composers had that specific
+				age in a specific year. If you select a genre, a key or a ngram, the
+				results are filtered considering not only the point of time and the
+				age of the composer, but limit them to be able to explorate the ages
+				of composers with regards to genres, keys or melodies. If you want
+				to find out if a melody occurred more often at a certain age of
+				composers and if that changed over time, you can select an ngram and
+				run the query with this limitation. If you want to do even more
+				advanced research, you can combine limitations, for example to see
+				how the results of a limitation to a certain genre change if you
+				additionally specify a certain key.</div>
+			<div class=descriptionPanel id="righttimecountryPanel">
+				Countries: How was the frequency of composing in countries over
+				time? The nearer to the red end of the color scale the color of a
+				spot is, the more composing activity was at that point of time in
+				that country. Again you can limit the results if you want to
+				investigate how the composing activity was in different countries if
+				you regard only one genre or key or ngram. If you for example
+				specify a melody you can see when and where it appeared most
+				frequently in composing history.</div>
+			<div class=descriptionPanel id="righttimepublicationsPanel">
+				This section shows the composing activity over the times meassured
+				by absolute numbers of publications.</div>
+			<div class=descriptionPanel id="rightkeypercentPanel">This
+				section shows the percentage use of keys. You may specify a genre to
+				see in which keys works of that genre are mostly written. You may
+				also specify a melody to see if this melody might appear in works
+				written in a certain key much more than in works written in other
+				keys meaning there is a key that might be specific for the use of a
+				certain melody, although the first intuition is that there is no
+				connection. More easy is the question how the use of keys is in a
+				certain country is.</div>
+			<div class=descriptionPanel id="rightcountrieskeyPanel">
+			This section shows the use of keys in different countries. The results are normalized by the sum of published works in a country, so that the use of a key in different countries can be compared and is not influenced by a country that has more published works than another country. The results are the percentages a key is used in a certain country.</div>
+			<div class=descriptionPanel id="righttimekeyPanel">This section
+				shows the use of keys over time. You can see for example when the
+				key C was used most frequently. To make sure the comparisons aren`t
+				influenced by the fact that a year had more publications than
+				another, results are normalized by the sum of publications of each
+				year.</div>
+			<div class=descriptionPanel id="rightagekeyPanel">This section
+				shows the use of keys among ages of composers. You can see for
+				example at which age of a composer the key C was used most
+				frequently. To make sure the comparisons aren`t influenced by the
+				fact that a composers may produce more works at a certain age than
+				they may at another age, results are normalized by the sum of
+				publications of each age.</div>
+
+			<div class=descriptionPanel id="rightcountrydownloadsPanel">
+				This image shows which countries have most downloaded works.</div>
+
+			<div class=descriptionPanel id="rightmostusedgenresPanel">This
+				image shows how the ten most used genres (which is computed by the
+				absolute number of publications that have been made in a genre) over
+				time.</div>
+
+			<div class=descriptionPanel id="rightmostusedngramsPanel">This
+				image shows how the ten most used ngrams (which is computed by the
+				number of publications in which a ngram appears) over time.</div>
+
+			<div class=descriptionPanel id="rightngramcomposerPanel">This
+				section is for those interested in the question which composers used
+				a certain ngram most frequently.</div>
+
+
+			<div class=descriptionPanel id="rightagedownloadscomposerPanel">
+				The success of a composer over his working period is computed by the
+				sum of downloaded works of each year. The image shows at which age a
+				composer was most successful during his working period.</div>
+
+
+
+			<div class=descriptionPanel id="rightagepublicationscomposerPanel">
+				This section shows the composing activity of a certain composer over
+				his working period. You can also test at which age the composer
+				composed works of a certain genre or at which age he used a certain
+				key or a melody most frequently.</div>
+
+			<div class=descriptionPanel id="rightcomposerngramPanel">Most
+				characteristic melodies shows the ten most used ngrams of a chosen
+				composer.</div>
+
+
+
+		</div>
+
+
+		<div class="heatmapTimeAgeCanvas" id="heatmapTimeAgeCanvas"></div>
+
+		<div class="heatmapTimeCountryCanvas" id="heatmapTimeCountryCanvas"></div>
+
+		<div class="heatmapCountriesKeyCanvas" id="heatmapCountriesKeyCanvas">
+		</div>
+		<div class="heatmapTimeKeyCanvas" id="heatmapTimeKeyCanvas"></div>
+		<div class="heatmapAgeKeyCanvas" id="heatmapAgeKeyCanvas"></div>
+
+
+
+	</div>
+
+	<script type="text/javascript">
+		window.onload = function() {
+			xx = h337.create({
+				"element" : document.getElementById("heatmapTimeAgeCanvas"),
+				"radius" : 5,
+				"visible" : true
+			});
+			xy = h337
+					.create({
+						"element" : document
+								.getElementById("heatmapTimeCountryCanvas"),
+						"radius" : 5,
+						"visible" : true
+					});
+			bb = h337.create({
+				"element" : document
+						.getElementById("heatmapCountriesKeyCanvas"),
+				"radius" : 5,
+				"visible" : true
+			});
+			yy = h337.create({
+				"element" : document.getElementById("heatmapTimeKeyCanvas"),
+				"radius" : 5,
+				"visible" : true
+			});
+			zz = h337.create({
+				"element" : document.getElementById("heatmapAgeKeyCanvas"),
+				"radius" : 5,
+				"visible" : true
+			});
+
+		};
+
+		//timeage
+
+		width = 313, height = 200;
+
+		var margin = {
+			bottom : 30,
+			left : 40,
+			right : 0,
+			top : 10
+		};
+
+		var x = d3.scale.ordinal().domain(
+				[ "1700", "1750", "1800", "1850", "1900", "1950", "2000" ])
+				.range([ 0, 50, 100, 150, 200, 250, 300, 313 ]);
+
+		var y = d3.scale.linear().domain([ 0, 100 ]).range([ height, 0 ]);
+
+		var xAxis = d3.svg.axis().scale(x).orient("bottom");
+
+		var yAxis = d3.svg.axis().scale(y).orient("left")
+
+		var svg = d3.select(".heatmapTimeAgeCanvas").append("svg").attr(
+				"width", width + margin.left + margin.right).attr("height",
+				height + margin.top + margin.bottom).append("g").attr(
+				"transform",
+				"translate(" + margin.left + "," + margin.top + ")");
+
+		svg.append("g").attr("class", "x axis").attr("transform",
+				"translate(0," + height + ")").call(xAxis);
+
+		svg.append("g").attr("class", "a axis").call(yAxis).append("text")
+				.attr("transform", "rotate(-90)").attr("y", 6).attr("dy",
+						".71em").style("text-anchor", "end");
+
+		svg.append("rect").attr("x", 1).attr("y", 0).attr("width", 313).attr(
+				"height", 199).style("fill", "#C0C0C0");
+
+		//timecountry
+
+		var width = 313, height = 560;
+
+		var margin = {
+			bottom : 30,
+			left : 120,
+			right : 0,
+			top : 10
+		};
+
+		var x = d3.scale.ordinal().domain(
+				[ "1700", "1750", "1800", "1850", "1900", "1950", "2000" ])
+				.range([ 0, 50, 100, 150, 200, 250, 300, 313 ]);
+
+		var y = d3.scale.ordinal().domain(
+				[ "Austria", "Belgium", "Bulgaria", "Cyprus", "Czech Republic",
+						"Denmark", "England", "Estonia", "Finland", "France",
+						"Germany", "Greece", "Hungary", "Ireland", "Italy",
+						"Latvia", "Lithuania", "Luxembourg", "Malta",
+						"Netherlands", "Poland", "Portugal", "Romania",
+						"Scotland", " Slovakia", "Slovenia", "Spain", "Sweden",
+						"" ]).range(
+				[ 10, 30, 50, 70, 90, 110, 130, 150, 170, 190, 210, 230, 250,
+						270, 290, 310, 330, 350, 370, 390, 410, 430, 450, 470,
+						490, 510, 530, 550 ]);
+
+		var xAxis = d3.svg.axis().scale(x).orient("bottom");
+
+		var yAxis = d3.svg.axis().scale(y).orient("left");
+
+		var svg = d3.select(".heatmapTimeCountryCanvas").append("svg").attr(
+				"width", width + margin.left + margin.right).attr("height",
+				height + margin.top + margin.bottom).append("g").attr(
+				"transform",
+				"translate(" + margin.left + "," + margin.top + ")");
+
+		svg.append("g").attr("class", "x axis").attr("transform",
+				"translate(0," + height + ")").call(xAxis);
+
+		svg.append("g").attr("class", "y axis").call(yAxis).append("text")
+				.attr("transform", "rotate(-90)").attr("y", 6).attr("dy",
+						".71em").style("text-anchor", "end");
+
+		var count1 = 0;
+
+		for ( var i = 0; i < 28; i++) {
+
+			svg.append("rect").attr("x", 0).attr("y", count1)
+					.attr("width", 313).attr("height", 19).style("fill",
+							"#C0C0C0").style("stroke", "white").style(
+							"stroke-width", 1);
+
+			count1 = count1 + 20;
+
+		}
+
+		//timedownloads
+
+		function timedownloads(input) {
+
+			d3.select(".linechartTimeDownloads").select("svg").remove();
+
+			var data = input;
+
+			var parseDate = d3.time.format("%Y").parse;
+
+			var margin = {
+				top : 20,
+				right : 20,
+				bottom : 30,
+				left : 50
+			}, width = 360, height = 190;
+
+			var x = d3.time.scale().range([ 0, width ]);
+
+			var y = d3.scale.linear().range([ height, 0 ]);
+
+			var xAxis = d3.svg.axis().scale(x).orient("bottom");
+
+			var yAxis = d3.svg.axis().scale(y).orient("left");
+
+			var line = d3.svg.line().x(function(d) {
+				return x(d.publication);
+			}).y(function(d) {
+				return y(d.downloads);
+			});
+
+			var svg = d3.select(".linechartTimeDownloads").append("svg").attr(
+					"width", width + margin.left + margin.right).attr("height",
+					height + margin.top + margin.bottom).append("g").attr(
+					"transform",
+					"translate(" + margin.left + "," + margin.top + ")");
+
+			data.forEach(function(d) {
+				d.publication = parseDate(d.publication);
+				d.downloads = +d.downloads;
+			});
+
+			x.domain(d3.extent(data, function(d) {
+				return d.publication;
+			}));
+			y.domain(d3.extent(data, function(d) {
+				return d.downloads;
+			}));
+
+			svg.append("g").attr("class", "x axis").attr("transform",
+					"translate(0," + height + ")").call(xAxis);
+
+			svg.append("g").attr("class", "a axis").call(yAxis).append("text")
+					.attr("transform", "rotate(-90)").attr("y", 6).attr("dy",
+							".71em").style("text-anchor", "end").text(
+							"Downloads");
+
+			svg.append("path").datum(data).attr("class", "line")
+					.attr("d", line);
+		}
+
+		//timedownloadsNormalized
+
+		function timedownloadsNormalized(input) {
+
+			d3.select(".linechartTimeDownloadsNormalized").select("svg")
+					.remove();
+
+			var data = input;
+
+			var parseDate = d3.time.format("%Y").parse;
+
+			var margin = {
+				top : 20,
+				right : 20,
+				bottom : 30,
+				left : 50
+			}, width = 360, height = 190;
+
+			var x = d3.time.scale().range([ 0, width ]);
+
+			var y = d3.scale.linear().range([ height, 0 ]);
+
+			var xAxis = d3.svg.axis().scale(x).orient("bottom");
+
+			var yAxis = d3.svg.axis().scale(y).orient("left");
+
+			var line = d3.svg.line().x(function(d) {
+				return x(d.publication);
+			}).y(function(d) {
+				return y(d.downloads);
+			});
+
+			var svg = d3
+					.select(".linechartTimeDownloadsNormalized")
+					.append("svg")
+					.attr("width", width + margin.left + margin.right)
+					.attr("height", height + margin.top + margin.bottom)
+					.append("g")
+					.attr("transform",
+							"translate(" + margin.left + "," + margin.top + ")");
+
+			data.forEach(function(d) {
+				d.publication = parseDate(d.publication);
+				d.downloads = +d.downloads;
+			});
+
+			x.domain(d3.extent(data, function(d) {
+				return d.publication;
+			}));
+			y.domain(d3.extent(data, function(d) {
+				return d.downloads;
+			}));
+
+			svg.append("g").attr("class", "x axis").attr("transform",
+					"translate(0," + height + ")").call(xAxis);
+
+			svg.append("g").attr("class", "a axis").call(yAxis).append("text")
+					.attr("transform", "rotate(-90)").attr("y", 6).attr("dy",
+							".71em").style("text-anchor", "end").text(
+							"Downloads");
+
+			svg.append("path").datum(data).attr("class", "line")
+					.attr("d", line);
+		}
+
+		//countrykey
+		var width = 50, height = 240;
+
+		var margin = {
+			bottom : 30,
+			left : 30,
+			right : 0,
+			top : 10
+		};
+
+		var y = d3.scale.ordinal().domain(
+				[ "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb",
+						"B" ]).range(
+				[ 10, 30, 50, 70, 90, 110, 130, 150, 170, 190, 210, 230 ]);
+
+		var xAxis = d3.svg.axis().scale(x).orient("bottom");
+
+		var yAxis = d3.svg.axis().scale(y).orient("left")
+
+		var svg = d3.select(".heatmapCountryKeyCanvas").append("svg").attr(
+				"width", width + margin.left + margin.right).attr("height",
+				height + margin.top + margin.bottom).append("g").attr(
+				"transform",
+				"translate(" + margin.left + "," + margin.top + ")");
+
+		svg.append("g").attr("class", "y axis").call(yAxis).append("text")
+				.attr("transform", "rotate(-90)").attr("y", 6).attr("dy",
+						".71em").style("text-anchor", "end");
+
+		svg.append("rect").attr("x", 1).attr("y", 0).attr("width", 50).attr(
+				"height", 240).style("fill", "#C0C0C0");
+
+		//countrieskey
+
+		var width = 560, height = 240;
+
+		var margin = {
+			bottom : 80,
+			left : 30,
+			right : 10,
+			top : 0
+		};
+
+		var x = d3.scale.ordinal()
+				.domain(
+						[ "Austria", "Belgium", "Bulgaria", "Cyprus",
+								"Czech Republic", "Denmark", "England",
+								"Estonia", "Finland", "France", "Germany",
+								"Greece", "Hungary", "Ireland", "Italy",
+								"Latvia", "Lithuania", "Luxembourg", "Malta",
+								"Netherlands", "Poland", "Portugal", "Romania",
+								"Scotland", " Slovakia", "Slovenia", "Spain",
+								"Sweden" ]).range(
+						[ 10, 30, 50, 70, 90, 110, 130, 150, 170, 190, 210,
+								230, 250, 270, 290, 310, 330, 350, 370, 390,
+								410, 430, 450, 470, 490, 510, 530, 550 ]);
+
+		var y = d3.scale.ordinal().domain(
+				[ "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb",
+						"B" ]).range(
+				[ 10, 30, 50, 70, 90, 110, 130, 150, 170, 190, 210, 230 ]);
+
+		var xAxis = d3.svg.axis().scale(x).orient("bottom");
+
+		var yAxis = d3.svg.axis().scale(y).orient("left")
+
+		var svg = d3.select(".heatmapCountriesKeyCanvas").append("svg").attr(
+				"width", width + margin.left + margin.right).attr("height",
+				height + margin.top + margin.bottom).append("g").attr(
+				"transform",
+				"translate(" + margin.left + "," + margin.top + ")");
+
+		svg.append("g").attr("class", "x axis").attr("transform",
+				"translate(0," + height + ")").call(xAxis).selectAll("text")
+				.attr("transform", "rotate(90),translate(50,-15)").style(
+						"font", "bold 10px Arial");
+		;
+
+		svg.append("g").attr("class", "y axis").call(yAxis).append("text")
+				.attr("transform", "rotate(-90)").attr("y", 6).attr("dy",
+						".71em").style("text-anchor", "end");
+
+		var count1 = 0;
+
+		for ( var i = 0; i < 12; i++) {
+
+			svg.append("rect").attr("x", 0).attr("y", count1)
+					.attr("width", 560).attr("height", 19).style("fill",
+							"#C0C0C0").style("stroke", "white").style(
+							"stroke-width", 1);
+
+			count1 = count1 + 20;
+
+		}
+
+		var count2 = 0;
+
+		for ( var i = 0; i < 28; i++) {
+
+			svg.append("line").attr("x", count2).attr("y", 0).attr("length",
+					240).style("stroke", "white").style("stroke-width", 1);
+
+			count2 = count2 + 20;
+
+		}
+
+		//timekey
+		var width = 313, height = 240;
+
+		var margin = {
+			bottom : 30,
+			left : 30,
+			right : 0,
+			top : 10
+		};
+
+		var x = d3.scale.ordinal().domain(
+				[ "1700", "1750", "1800", "1850", "1900", "1950", "2000" ])
+				.range([ 0, 50, 100, 150, 200, 250, 300, 313 ]);
+
+		var y = d3.scale.ordinal().domain(
+				[ "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb",
+						"B" ]).range(
+				[ 10, 30, 50, 70, 90, 110, 130, 150, 170, 190, 210, 230 ]);
+
+		var xAxis = d3.svg.axis().scale(x).orient("bottom");
+
+		var yAxis = d3.svg.axis().scale(y).orient("left")
+
+		var svg = d3.select(".heatmapTimeKeyCanvas").append("svg").attr(
+				"width", width + margin.left + margin.right).attr("height",
+				height + margin.top + margin.bottom).append("g").attr(
+				"transform",
+				"translate(" + margin.left + "," + margin.top + ")");
+
+		svg.append("g").attr("class", "x axis").attr("transform",
+				"translate(0," + height + ")").call(xAxis);
+
+		svg.append("g").attr("class", "y axis").call(yAxis).append("text")
+				.attr("transform", "rotate(-90)").attr("y", 6).attr("dy",
+						".71em").style("text-anchor", "end");
+
+		var count = 0;
+
+		for ( var i = 0; i < 12; i++) {
+
+			svg.append("rect").attr("x", 0).attr("y", count).attr("width", 313)
+					.attr("height", 19).style("fill", "#C0C0C0").style(
+							"stroke", "white").style("stroke-width", 1);
+
+			count = count + 20;
+
+		}
+
+		//agekey
+		var width = 300, height = 240;
+
+		var margin = {
+			bottom : 30,
+			left : 30,
+			right : 0,
+			top : 10
+		};
+
+		var x = d3.scale.linear().domain([ 0, 100 ]).range([ 0, 300 ]);
+
+		var y = d3.scale.ordinal().domain(
+				[ "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb",
+						"B" ]).range(
+				[ 10, 30, 50, 70, 90, 110, 130, 150, 170, 190, 210, 230 ]);
+
+		var xAxis = d3.svg.axis().scale(x).orient("bottom");
+
+		var yAxis = d3.svg.axis().scale(y).orient("left")
+
+		var svg = d3.select(".heatmapAgeKeyCanvas").append("svg").attr("width",
+				width + margin.left + margin.right).attr("height",
+				height + margin.top + margin.bottom).append("g").attr(
+				"transform",
+				"translate(" + margin.left + "," + margin.top + ")");
+
+		svg.append("g").attr("class", "x axis").attr("transform",
+				"translate(0," + height + ")").call(xAxis);
+
+		svg.append("g").attr("class", "y axis").call(yAxis).append("text")
+				.attr("transform", "rotate(-90)").attr("y", 6).attr("dy",
+						".71em").style("text-anchor", "end");
+
+		var count = 0;
+
+		for ( var i = 0; i < 12; i++) {
+
+			svg.append("rect").attr("x", 0).attr("y", count).attr("width", 300)
+					.attr("height", 19).style("fill", "#C0C0C0").style(
+							"stroke", "white").style("stroke-width", 1);
+
+			count = count + 20;
+
+		}
+
+		function workscore(input) {
+
+			d3.select(".pieWorkScore").selectAll("svg").remove();
+
+			var data = input;
+
+			var width = 250, height = 250, radius = Math.min(width, height) / 2;
+
+			var color = d3.scale.category20b();
+
+			var arc = d3.svg.arc().outerRadius(radius - 10).innerRadius(0);
+
+			var pie = d3.layout.pie().sort(null).value(function(d) {
+				return d.works;
+			});
+
+			var svg = d3.select(".pieWorkScore").append("svg").attr("width",
+					width).attr("height", height).append("g").attr("transform",
+					"translate(" + width / 2 + "," + height / 2 + ")");
+
+			data.forEach(function(d) {
+				d.works = +d.works;
+			});
+
+			var g = svg.selectAll(".arc").data(pie(data)).enter().append("g")
+					.attr("class", "arc");
+
+			g.append("path").attr("d", arc).style("fill", function(d) {
+				return color(d.data.scores);
+			});
+
+			g.append("text").attr("transform", function(d) {
+				return "translate(" + arc.centroid(d) + ")";
+			}).attr("dy", ".35em").style("text-anchor", "middle").text(
+					function(d) {
+						return d.data.scores;
+					});
+
+			var scores = data.map(function(entry) {
+				return entry.scores;
+			});
+
+			var legend = d3.select(".pieWorkScore").append("svg").attr("class",
+					"legend").attr("width", 125).attr("height", radius * 2)
+					.selectAll("g").data(scores).enter().append("g").attr(
+							"transform", function(d, i) {
+								return "translate(40," + i * 20 + ")";
+							});
+
+			legend.append("rect").attr("width", 18).attr("height", 18).style(
+					"fill", color);
+
+			legend.append("text").attr("x", 24).attr("y", 9)
+					.attr("dy", ".35em").text(function(d, i) {
+						return scores[i];
+					});
+
+		}
+
+		function workdownloads(input) {
+
+			d3.select(".pieWorkDownloads").selectAll("svg").remove();
+
+			var data = input;
+
+			
+			var width = 250, height = 250, radius = Math.min(width, height) / 2;
+
+			var color = d3.scale.category20b();
+
+			var arc = d3.svg.arc().outerRadius(radius - 10).innerRadius(0);
+
+			var pie = d3.layout.pie().sort(null).value(function(d) {
+				return d.works;
+			});
+
+			var svg = d3.select(".pieWorkDownloads").append("svg").attr(
+					"width", width).attr("height", height).append("g").attr(
+					"transform",
+					"translate(" + width / 2 + "," + height / 2 + ")");
+
+			data.forEach(function(d) {
+				d.works = +d.works;
+			});
+
+			var g = svg.selectAll(".arc").data(pie(data)).enter().append("g")
+					.attr("class", "arc");
+
+			g.append("path").attr("d", arc).style("fill", function(d) {
+				return color(d.data.downloads);
+			});
+
+			var downloads = data.map(function(entry) {
+				return entry.downloads;
+			});
+
+			var legend = d3.select(".pieWorkDownloads").append("svg").attr(
+					"class", "legend").attr("width", 125).attr("height",
+					radius * 2).selectAll("g").data(downloads).enter().append(
+					"g").attr("transform", function(d, i) {
+				return "translate(40," + i * 20 + ")";
+			});
+
+			legend.append("rect").attr("width", 18).attr("height", 18).style(
+					"fill", color);
+
+			legend.append("text").attr("x", 24).attr("y", 9)
+					.attr("dy", ".35em").text(function(d, i) {
+						return downloads[i];
+					});
+
+		}
+
+		function keypercent(input) {
+
+			d3.select(".pieKeyPercent").select("svg").remove();
+
+			var data = input;
+
+			var width = 250, height = 250, radius = Math.min(width, height) / 2;
+
+			var color = d3.scale.category20b();
+
+			var arc = d3.svg.arc().outerRadius(radius - 10).innerRadius(0);
+
+			var pie = d3.layout.pie().sort(null).value(function(d) {
+				return d.counts;
+			});
+
+			var svg = d3.select(".pieKeyPercent").append("svg").attr("width",
+					width).attr("height", height).append("g").attr("transform",
+					"translate(" + width / 2 + "," + height / 2 + ")");
+
+			data.forEach(function(d) {
+				d.counts = +d.counts;
+			});
+
+			var g = svg.selectAll(".arc").data(pie(data)).enter().append("g")
+					.attr("class", "arc");
+
+			g.append("path").attr("d", arc).style("fill", function(d) {
+				return color(d.data.key);
+			});
+
+			g.append("text").attr("transform", function(d) {
+				return "translate(" + arc.centroid(d) + ")";
+			}).attr("dy", ".35em").style("text-anchor", "middle").text(
+					function(d) {
+						return d.data.key;
+					});
+
+		}
+
+		function composergenre(input) {
+
+			d3.select(".pieComposerGenre").selectAll("svg").remove();
+
+			var data = input;
+
+			var width = 250, height = 250, radius = Math.min(width, height) / 2;
+
+			var color = d3.scale.category20b();
+
+			var arc = d3.svg.arc().outerRadius(radius - 10).innerRadius(0);
+
+			var pie = d3.layout.pie().sort(null).value(function(d) {
+				return d.counts;
+			});
+
+			var svg = d3.select(".pieComposerGenre").append("svg").attr(
+					"width", width).attr("height", height).append("g").attr(
+					"transform",
+					"translate(" + width / 2 + "," + height / 2 + ")");
+
+			data.forEach(function(d) {
+				d.counts = +d.counts;
+			});
+
+			var g = svg.selectAll(".arc").data(pie(data)).enter().append("g")
+					.attr("class", "arc");
+
+			g.append("path").attr("d", arc).style("fill", function(d) {
+				return color(d.data.genre);
+			});
+
+			
+			
+			var genre = data.map(function(d) {
+				return d.genre;
+			});
+
+			var legend = d3.select(".pieComposerGenre").append("svg").attr(
+					"class", "legend").attr("width", 125).attr("height",
+					radius*2).selectAll("g").data(genre).enter().append("g")
+					.attr("transform", function(d, i) {
+						return "translate(40," + i * 20 + ")";
+					});
+
+			legend.append("rect").attr("width", 18).attr("height", 18).style(
+					"fill", color);
+
+			legend.append("text").attr("x", 24).attr("y", 9)
+					.attr("dy", ".35em").text(function(d, i) {
+						return genre[i];
+					});
+
+		}
+
+		function composerkey(input) {
+
+			d3.select(".pieComposerKey").select("svg").remove();
+
+			var data = input;
+
+			var width = 250, height = 250, radius = Math.min(width, height) / 2;
+
+			var color = d3.scale.category20b();
+
+			var arc = d3.svg.arc().outerRadius(radius - 10).innerRadius(0);
+
+			var pie = d3.layout.pie().sort(null).value(function(d) {
+				return d.counts;
+			});
+
+			var svg = d3.select(".pieComposerKey").append("svg").attr("width",
+					width).attr("height", height).append("g").attr("transform",
+					"translate(" + width / 2 + "," + height / 2 + ")");
+
+			data.forEach(function(d) {
+				d.counts = +d.counts;
+			});
+
+			var g = svg.selectAll(".arc").data(pie(data)).enter().append("g")
+					.attr("class", "arc");
+
+			g.append("path").attr("d", arc).style("fill", function(d) {
+				return color(d.data.key);
+			});
+
+			g.append("text").attr("transform", function(d) {
+				return "translate(" + arc.centroid(d) + ")";
+			}).attr("dy", ".35em").style("text-anchor", "middle").text(
+					function(d) {
+						return d.data.key;
+					});
+
+		}
+
+		function countrydownloads(input) {
+
+			d3.select(".barchartCountryDownloads").select("svg").remove();
+
+			var data = input;
+
+			var margin = {
+				top : 20,
+				right : 20,
+				bottom : 100,
+				left : 100
+			}, width = 350, height = 200;
+
+			var x = d3.scale.ordinal().rangeRoundBands([ 0, width ], .1);
+
+			var y = d3.scale.linear().range([ height, 0 ]);
+
+			var xAxis = d3.svg.axis().scale(x).orient("bottom");
+
+			var yAxis = d3.svg.axis().scale(y).orient("left")
+
+			var svg = d3
+					.select(".barchartCountryDownloads")
+					.append("svg")
+					.attr("width", width + margin.left + margin.right)
+					.attr("height", height + margin.top + margin.bottom)
+					.append("g")
+					.attr("transform",
+							"translate(" + margin.left + "," + margin.top + ")");
+
+			data.forEach(function(d) {
+				d.downloads = +d.downloads;
+			});
+
+			x.domain(data.map(function(d) {
+				return d.country;
+			}));
+			y.domain([ 0, d3.max(data, function(d) {
+				return d.downloads;
+			}) ]);
+
+			svg.append("g").attr("class", "x axis").attr("transform",
+					"translate(0," + height + ")").call(xAxis)
+					.selectAll("text").attr("transform",
+							"rotate(90),translate(50,-15)").style("font",
+							"bold 10px Arial");
+			;
+
+			svg.append("g").attr("class", "y axis").call(yAxis).append("text")
+					.attr("transform", "rotate(-90)").style("font",
+							"bold 3px Arial");
+
+			svg.selectAll(".bar").data(data).enter().append("rect").attr(
+					"class", "bar").attr("x", function(d) {
+				return x(d.country);
+			}).attr("width", x.rangeBand()).attr("y", function(d) {
+				return y(d.downloads);
+			}).attr("height", function(d) {
+				return height - y(d.downloads);
+			});
+
+		}
+
+		function mostusedgenres(input) {
+
+			d3.select(".multilinechartMostUsedGenres").selectAll("svg")
+					.remove();
+
+			var data = input;
+
+			// first we need to corerce the data into the right formats
+			data = data.map(function(d) {
+				return {
+					genre : d.genre,
+					year : new Date(d.publication),
+					counts : +d.counts
+				};
+			});
+
+			// nesting the data on genre since we want to draw only one line per genre
+			data = d3.nest().key(function(d) {
+				return d.genre;
+			}).entries(data);
+
+			var margin = {
+				top : 40,
+				right : 0,
+				bottom : 20,
+				left : 70
+			}, width = 360, height = 200;
+
+			var x = d3.time.scale().domain([ d3.min(data, function(d) {
+				return d3.min(d.values, function(d) {
+					return d.year;
+				});
+			}), d3.max(data, function(d) {
+				return d3.max(d.values, function(d) {
+					return d.year;
+				});
+			}) ]).range([ 0, width ]);
+
+			var y = d3.scale.linear().domain([ 0, d3.max(data, function(d) {
+				return d3.max(d.values, function(d) {
+					return d.counts;
+				});
+			}) ]).range([ height, 0 ]);
+
+			var color = d3.scale.category10().domain(
+					d3.keys(data[0]).filter(function(key) {
+						return key == "genre";
+					}));
+
+			var xAxis = d3.svg.axis().scale(x).orient("bottom");
+
+			var yAxis = d3.svg.axis().scale(y).orient("left");
+
+			var line = d3.svg.line()
+			//.interpolate("basis")
+			.x(function(d) {
+				return x(d.year);
+			}).y(function(d) {
+				console.log(d);
+				return y(d.counts);
+			});
+
+			var svg = d3
+					.select(".multilinechartMostUsedGenres")
+					.append("svg")
+					.attr("width", width + margin.left + margin.right)
+					.attr("height", height + margin.top + margin.bottom)
+					.append("g")
+					.attr("transform",
+							"translate(" + margin.left + "," + margin.top + ")");
+
+			svg.append("g").attr("class", "x axis").attr("transform",
+					"translate(0," + height + ")").call(xAxis);
+
+			svg.append("g").attr("class", "a axis").call(yAxis);
+
+			var genres = svg.selectAll(".genre").data(data, function(d) {
+				return d.key;
+			}).enter().append("g").attr("class", "genre");
+
+			genres.append("path").attr("class", "line").attr("d", function(d) {
+				return line(d.values);
+			}).style("stroke", function(d) {
+				return color(d.key);
+			});
+
+			var legend = d3.select(".multilinechartMostUsedGenres").append(
+					"svg").attr("class", "legend").attr("width", 20).attr(
+					"height", 220).selectAll("g").data(data, function(d) {
+				return d.key;
+			}).enter().append("g").attr("transform", function(d, i) {
+				return "translate(40," + i * 20 + ")";
+			});
+
+			legend.append("rect").attr("width", 18).attr("height", 18).style(
+					"fill", function(d) {
+						return color(d.key);
+					});
+
+			legend.append("text").attr("x", 24).attr("y", 9)
+					.attr("dy", ".35em").text(function(d) {
+						return d.key;
+					});
+
+		}
+
+		function mostusedngrams(input) {
+
+			d3.select(".multilinechartMostUsedNgrams").selectAll("svg")
+					.remove();
+
+			var data = input;
+
+			// first we need to corerce the data into the right formats
+			data = data.map(function(d) {
+				return {
+					ngram : d.ngram,
+					year : new Date(d.publication),
+					counts : +d.counts
+				};
+			});
+
+			// nesting the data on genre since we want to draw only one line per genre
+			data = d3.nest().key(function(d) {
+				return d.ngram;
+			}).entries(data);
+
+			var margin = {
+				top : 40,
+				right : 0,
+				bottom : 20,
+				left : 70
+			}, width = 360, height = 200;
+
+			var x = d3.time.scale().domain([ d3.min(data, function(d) {
+				return d3.min(d.values, function(d) {
+					return d.year;
+				});
+			}), d3.max(data, function(d) {
+				return d3.max(d.values, function(d) {
+					return d.year;
+				});
+			}) ]).range([ 0, width ]);
+
+			var y = d3.scale.linear().domain([ 0, d3.max(data, function(d) {
+				return d3.max(d.values, function(d) {
+					return d.counts;
+				});
+			}) ]).range([ height, 0 ]);
+
+			var color = d3.scale.category10().domain(
+					d3.keys(data[0]).filter(function(key) {
+						return key == "ngram";
+					}));
+
+			var xAxis = d3.svg.axis().scale(x).orient("bottom");
+
+			var yAxis = d3.svg.axis().scale(y).orient("left");
+
+			var line = d3.svg.line()
+			//.interpolate("basis")
+			.x(function(d) {
+				return x(d.year);
+			}).y(function(d) {
+				console.log(d);
+				return y(d.counts);
+			});
+
+			var svg = d3
+					.select(".multilinechartMostUsedNgrams")
+					.append("svg")
+					.attr("width", width + margin.left + margin.right)
+					.attr("height", height + margin.top + margin.bottom)
+					.append("g")
+					.attr("transform",
+							"translate(" + margin.left + "," + margin.top + ")");
+
+			svg.append("g").attr("class", "x axis").attr("transform",
+					"translate(0," + height + ")").call(xAxis);
+
+			svg.append("g").attr("class", "a axis").call(yAxis);
+
+			var ngrams = svg.selectAll(".ngrams").data(data, function(d) {
+				return d.key;
+			}).enter().append("g").attr("class", "ngram");
+
+			ngrams.append("path").attr("class", "line").attr("d", function(d) {
+				return line(d.values);
+			}).style("stroke", function(d) {
+				return color(d.key);
+			});
+
+			var legend = d3.select(".multilinechartMostUsedNgrams").append(
+					"svg").attr("class", "legend").attr("width", 20).attr(
+					"height", 220).selectAll("g").data(data, function(d) {
+				return d.key;
+			}).enter().append("g").attr("transform", function(d, i) {
+				return "translate(40," + i * 20 + ")";
+			});
+
+			legend.append("rect").attr("width", 18).attr("height", 18).style(
+					"fill", function(d) {
+						return color(d.key);
+					});
+
+			legend.append("text").attr("x", 24).attr("y", 9)
+					.attr("dy", ".35em").text(function(d) {
+						return d.key;
+					});
+
+		}
+
+		function timepublications(input) {
+
+			d3.select(".linechartTimePublications").select("svg").remove();
+
+			var data = input;
+
+			var parseDate = d3.time.format("%Y").parse;
+
+			var margin = {
+				top : 20,
+				right : 20,
+				bottom : 30,
+				left : 50
+			}, width = 360, height = 190;
+
+			var x = d3.time.scale().range([ 0, width ]);
+
+			var y = d3.scale.linear().range([ height, 0 ]).domain([ 0, 50 ]);
+
+			var xAxis = d3.svg.axis().scale(x).orient("bottom");
+
+			var yAxis = d3.svg.axis().scale(y).orient("left");
+
+			var line = d3.svg.line().x(function(d) {
+				return x(d.publication);
+			}).y(function(d) {
+				return y(d.counts);
+			});
+
+			var svg = d3
+					.select(".linechartTimePublications")
+					.append("svg")
+					.attr("width", width + margin.left + margin.right)
+					.attr("height", height + margin.top + margin.bottom)
+					.append("g")
+					.attr("transform",
+							"translate(" + margin.left + "," + margin.top + ")");
+
+			data.forEach(function(d) {
+				d.publication = parseDate(d.publication);
+				d.counts = +d.counts;
+			});
+
+			x.domain(d3.extent(data, function(d) {
+				return d.publication;
+			}));
+			y.domain(d3.extent(data, function(d) {
+				return d.counts;
+			}));
+
+			svg.append("g").attr("class", "x axis").attr("transform",
+					"translate(0," + height + ")").call(xAxis);
+
+			svg.append("g").attr("class", "y axis").call(yAxis).append("text")
+					.attr("transform", "rotate(-90)").attr("y", 6).attr("dy",
+							".71em").style("text-anchor", "end").text(
+							"Publications");
+
+			svg.append("path").datum(data).attr("class", "line")
+					.attr("d", line);
+		}
+
+		function agedownloadscomposer(input) {
+
+			d3.select(".linechartAgeDownloadsComposer").select("svg").remove();
+
+			var data = input;
+
+			var margin = {
+				top : 20,
+				right : 20,
+				bottom : 50,
+				left : 50
+			}, width = 360, height = 190;
+
+			var x = d3.scale.linear().range([ 0, width ]);
+
+			var y = d3.scale.linear().range([ height, 0 ]);
+
+			var xAxis = d3.svg.axis().scale(x).orient("bottom");
+
+			var yAxis = d3.svg.axis().scale(y).orient("left");
+
+			var line = d3.svg.line().x(function(d) {
+				return x(d.age);
+			}).y(function(d) {
+				return y(d.downloads);
+			});
+
+			var svg = d3
+					.select(".linechartAgeDownloadsComposer")
+					.append("svg")
+					.attr("width", width + margin.left + margin.right)
+					.attr("height", height + margin.top + margin.bottom)
+					.append("g")
+					.attr("transform",
+							"translate(" + margin.left + "," + margin.top + ")");
+
+			data.forEach(function(d) {
+				d.age = d.age;
+				d.downloads = +d.downloads;
+			});
+
+			x.domain(d3.extent(data, function(d) {
+				return d.age;
+			}));
+			y.domain(d3.extent(data, function(d) {
+				return d.downloads;
+			}));
+
+			svg.append("g").attr("class", "x axis").attr("transform",
+					"translate(0," + height + ")").call(xAxis);
+
+			svg.append("g").attr("class", "y axis").call(yAxis).append("text")
+					.attr("transform", "rotate(-90)").attr("y", 6).attr("dy",
+							".71em").style("text-anchor", "end").text(
+							"Downloads");
+
+			svg.append("path").datum(data).attr("class", "line")
+					.attr("d", line);
+		}
+
+		function agepublicationscomposer(input) {
+
+			d3.select(".linechartAgePublicationsComposer").select("svg")
+					.remove();
+
+			var data = input;
+
+			var margin = {
+				top : 20,
+				right : 20,
+				bottom : 50,
+				left : 50
+			}, width = 360, height = 190;
+
+			var x = d3.scale.linear().range([ 0, width ]);
+
+			var y = d3.scale.linear().range([ height, 0 ]).domain([ 0, 50 ]);
+
+			var xAxis = d3.svg.axis().scale(x).orient("bottom");
+
+			var yAxis = d3.svg.axis().scale(y).orient("left");
+
+			var line = d3.svg.line().x(function(d) {
+				return x(d.age);
+			}).y(function(d) {
+				return y(d.counts);
+			});
+
+			var svg = d3
+					.select(".linechartAgePublicationsComposer")
+					.append("svg")
+					.attr("width", width + margin.left + margin.right)
+					.attr("height", height + margin.top + margin.bottom)
+					.append("g")
+					.attr("transform",
+							"translate(" + margin.left + "," + margin.top + ")");
+
+			data.forEach(function(d) {
+				d.age = d.age;
+				d.counts = +d.counts;
+			});
+
+			x.domain(d3.extent(data, function(d) {
+				return d.age;
+			}));
+			y.domain(d3.extent(data, function(d) {
+				return d.counts;
+			}));
+
+			svg.append("g").attr("class", "x axis").attr("transform",
+					"translate(0," + height + ")").call(xAxis);
+
+			svg.append("g").attr("class", "y axis").call(yAxis).append("text")
+					.attr("transform", "rotate(-90)").attr("y", 6).attr("dy",
+							".71em").style("text-anchor", "end").text(
+							"Publications");
+
+			svg.append("path").datum(data).attr("class", "line")
+					.attr("d", line);
+
+		}
+	</script>
+	</div>
+</body>
+</html>
+

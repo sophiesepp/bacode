@@ -1,0 +1,3 @@
+# Module srsr
+# RPC service class, partial path of RPC policy file
+com.sophiesepp.client.GreetingService, 8A14FB38B4F87DAFB0AD2272E460BD15.gwt.rpc
